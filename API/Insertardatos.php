@@ -17,7 +17,7 @@
   
   class Result {}
 
-  // GENERA LOS DATOS DE RESPUESTA
+  // GENERA LOS DATOS DE REPUESTA
   $response = new Result();
   $response->resultado = 'OK';
   $response->mensaje = 'SE REGISTRO EXITOSAMENTE EL USUARIO';
