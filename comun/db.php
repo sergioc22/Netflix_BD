@@ -6,7 +6,7 @@
 function conexion(){
 
 
-    $enlace = mysqli_connect('localhost', 'root', '', ''); //conexion con la base de datos
+    $enlace = mysqli_connect('localhost', 'root', '', 'netflix'); //conexion con la base de datos
     
     if(!$enlace){ //if $enlace esto da siempre true (Si tenemos error en la conexion por eso pone !)
      echo "Error: No se puede conectara MySQL." . PHP_EOL;
