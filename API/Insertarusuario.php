@@ -12,8 +12,8 @@
   $conexion = conexion(); // CREA LA CONEXION
   
   // REALIZA LA QUERY A LA DB
-  mysqli_query($conexion, "INSERT INTO personas(nombre, email, asunto, postre, mensaje) VALUES
-                  ('$params->nombre', '$params->email', '$params->asunto', '$params->postre', '$params->mensaje')");    
+  mysqli_query($conexion, "INSERT INTO Usuario(Email, Contraseña, Nombre_Usuario , Nombre, Apellido, Edad, Sexo, id_Ciudad) VALUES
+                  ('$params->email', '$params->password', '$params->nombreUser', '$params->nombre', '$params->apellido', $params->edad, '$params->sexo', $params->id_ciudad)");    
   
   class Result {}
 
