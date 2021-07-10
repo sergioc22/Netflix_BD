@@ -1,30 +1,76 @@
 <!--DATOS DEL USUARIO -->
 <div class="container">
     <h2>Ingresar Datos del Usuario</h2>
+    <div class="starter-template">
     <form [formGroup]="usuario">
     <div class="form-floating mb-3 col-6 form-group">
         <input type="email" class="form-control" formControlName="email" placeholder="Correo" required>
         <label for="floatingInput">Correo</label>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="alert alert-danger">
+      <div *ngIf="email.errors?.required">
+        Escribir un correo valido.
+      </div>
+      <div *ngIf="email.errors?.email">
+        Escribir un correo valido.
+      </div>
+      </div>
       </div>
       <div class="form-floating mb-3 col-6 form-group">
         <input type="password" class="form-control" formControlName="password" placeholder="Contraseña" required>
-        <label for="floatingPassword">Contraseña</label>        
+        <label for="floatingPassword">Contraseña</label> 
+        <div *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="alert alert-danger">
+      <div *ngIf="password.errors?.required">
+        Escribir una Contraseña.
+      </div>
+      </div>       
       </div>
       <div class="form-floating mb-3 col-6 form-group">
         <input type="text" class="form-control" formControlName="nombreUser" placeholder="Nombre de Usuario" required>
         <label for="floatingInput">Nombre de Usuario</label>
+        <div *ngIf="nombreUser.invalid && (nombreUser.dirty || nombreUser.touched)"
+        class="alert alert-danger">
+      <div *ngIf="nombreUser.errors?.required">
+        Escribir un nombre de Usuario
+      </div>
+      </div> 
       </div>
       <div class="form-floating mb-3 col-6 form-group">
         <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre" required>
         <label for="floatingInput">Nombre</label>
+        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+        class="alert alert-danger">
+      <div *ngIf="nombre.errors?.required">
+        Escribir un Nombre.
+      </div>
+      </div> 
       </div>
       <div class="form-floating mb-3 col-6 form-gorup">
         <input type="text" class="form-control" formControlName="apellido" placeholder="Apellido" required>
         <label for="floatingInput">Apellido</label>
+        <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+        class="alert alert-danger">
+      <div *ngIf="apellido.errors?.required">
+        Escribir un Apellido.
+      </div>
+      </div> 
       </div>
       <div class="form-floating mb-3 col-2 form-group">
         <input type="number" class="form-control" formControlName="edad" placeholder="Edad" required>
         <label for="floatingInput">Edad</label>
+        <div *ngIf="edad.invalid && (edad.dirty || edad.touched)"
+        class="alert alert-danger">
+      <div *ngIf="edad.errors?.required">
+        Escribir una Edad valida.
+      </div>
+      <div *ngIf="edad.errors?.min">
+        Escribir una Edad valida.
+      </div>
+      <div *ngIf="edad.errors?.max">
+        Escribir una Edad valida.
+      </div>
+      </div> 
       </div>
       <div class="mb-3 col-2 form-group">
         <h5>Escoger Sexo:</h5>
@@ -32,6 +78,12 @@
             <option value="M">M</option>
             <option value="F">F</option>
         </select>
+        <div *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)"
+        class="alert alert-danger">
+      <div *ngIf="sexo.errors?.required">
+        Escoger una opcion.
+      </div>
+      </div>       
     </div>
 <!--UBICACION DEL USUARIO-->
 <div class="container">
@@ -42,6 +94,12 @@
         <div class="mb-3 col-6" >
             <select  class="form-select form-control" formControlName="idPais" aria-label="Default select example"  (change)="listarCiudades()">
                 <option  *ngFor="let paises of listaPaises" value="{{paises.Id_Pais}}" >{{paises.Nombre}} </option>
+                <div *ngIf="idPais.invalid && (idPais.dirty || idPais.touched)"
+                class="alert alert-danger">
+              <div *ngIf="idPais.errors?.required">
+                Escoger una opcion.
+              </div>
+              </div> 
               </select> 
         </div>
         </form>
@@ -55,13 +113,20 @@
         <select  class="form-select form-control" aria-label="Default select example" formControlName="id_ciudad" *ngIf="hayRegistrosCiudades(); else no_ciudades_registradas" >
             <option *ngFor="let ciudad of listaCiudades" value="{{ciudad.Id_Ciudad}}">{{ciudad.Nombre}}</option> 
           </select>
+          <div *ngIf="id_ciudad.invalid && (id_ciudad.dirty || id_ciudad.touched)"
+        class="alert alert-danger">
+      <div *ngIf="id_ciudad.errors?.required">
+        Escoger una opcion.
+      </div>
+      </div> 
         </div>
           <ng-template #no_ciudades_registradas>
             <h5><p>Escoger Pais</p></h5>
           </ng-template>
         </div> 
 </div>
-</form>  
+</form> 
+</div> 
 </div>
 <!--TIPO DE PLAN A ESCOGER-->
 <div class="container ">
@@ -103,14 +168,36 @@
     <div class="form-floating mb-3 col-6">
         <input type="number" class="form-control" formControlName="numero" placeholder="Numero de Tarjeta" >
         <label for="floatingInput">Numero de Tarjeta</label>
+        <div *ngIf="numero.invalid && (numero.dirty || numero.touched)"
+        class="alert alert-danger">
+      <div *ngIf="numero.errors?.required">
+        Escribir un numero de tarjeta validad.
+      </div>
+      <div *ngIf="numero.errors?.min">Escribir un numero de tarjeta validad.</div>
+      
+    </div>
       </div>
       <div class="form-floating mb-3 col-6">
         <input type="number" class="form-control" formControlName="cvv" placeholder="CVV" >
         <label for="floatingInput">CVV</label>
+        <div *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)"
+        class="alert alert-danger">
+      <div *ngIf="cvv.errors?.required">
+        Escribir una cvv validad.
+      </div>
+      <div *ngIf="cvv.errors?.min">Escribir una cvv validad.</div>
+      <div *ngIf="cvv.errors?.max">Escribir una cvv validad.</div>
+    </div>
       </div>
       <div class="form-floating mb-3 col-6">
         <input type="date" class="form-control" formControlName="fechaVencimiento" placeholder="Fecha de vencimiento" >
         <label for="floatingInput">Fecha de vencimiento</label>
+        <div *ngIf="fechaVencimiento.invalid && (fechaVencimiento.dirty || fechaVencimiento.touched)"
+        class="alert alert-danger">
+      <div *ngIf="fechaVencimiento.errors?.required">
+        Escoger una fecha.
+      </div>
+      </div> 
       </div>
     </form>
 </div>
@@ -121,6 +208,6 @@
 </form>
 <div class="container display-flex">
     <div class=" d-flex justify-content-center mt-5 mb-5">
-        <button  type="button" class="btn btn-danger btn-lg " (click)="Registrar()" routerLink="/" >Registrarse</button>
+        <button  type="submit" class="btn btn-danger btn-lg " [disabled]="usuario.invalid ? true : false || tarjetaCredito.invalid ? true : false" (click)="Registrar()" routerLink="/" >Registrarse</button>
     </div>    
 </div>

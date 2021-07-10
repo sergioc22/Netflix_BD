@@ -13,15 +13,18 @@ import { LoginServicioService } from './login-servicio.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  usuario = new FormGroup({
-    email: new FormControl(),
-    password: new FormControl()
-  });
+  usuario:any;
   submitted = false;
   constructor(private dataService: ApiServicio, private httpClient: HttpClient, private router: Router, private formBuilder: FormBuilder ) { }
 
   ngOnInit(): void {
+    this.usuario = new FormGroup({
+      email: new FormControl('',[Validators.email, Validators.required]),
+      password: new FormControl('', Validators.required)
+    });
   }
+  get email() { return this.usuario.get('email'); }
+  get password() { return this.usuario.get('password'); }
   iniciarSesion(){
     this.submitted = true;
     this.iniciar_Sesion(this.usuario)
@@ -32,8 +35,9 @@ export class LoginComponent implements OnInit {
       data => {
         const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/ListaPerfiles';
         this.router.navigate([redirect]);
-    });
+    }
+
+    );
+      alert("Correo o Contraseña incorrectos") 
   }
-
-
 }

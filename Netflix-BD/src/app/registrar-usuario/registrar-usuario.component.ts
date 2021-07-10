@@ -12,30 +12,16 @@ import { compileDeclareComponentFromMetadata } from '@angular/compiler';
 })
 export class RegistrarUsuarioComponent implements OnInit {
   submited=false;
-  usuario = new FormGroup({
-    email: new FormControl(),
-    password: new FormControl(),
-    nombreUser: new FormControl(),
-    nombre: new FormControl(),
-    apellido: new FormControl(),
-    edad: new FormControl(),
-    sexo: new FormControl(),
-    id_ciudad: new FormControl()
-  });
-  tarjetaCredito = new FormGroup({
-    numero: new FormControl(),
-    cvv: new FormControl(),
-    fechaVencimiento: new FormControl(),
-  });
+  usuario:any;
+  
+  tarjetaCredito: any;
   plan = new FormGroup({
     idPlan: new FormControl()
   });
    suscripcion= new FormGroup({
     idSuscripcion: new FormControl()
   });
-  pais= new FormGroup({
-    idPais: new FormControl()
-  });
+  pais:any;
   listaPaises:any;
   listaCiudades:any;
   listaPlanes:any;
@@ -46,13 +32,43 @@ export class RegistrarUsuarioComponent implements OnInit {
     iduser: new FormControl(),
     idtarjeta: new FormControl()
   });
-  constructor(private registrarUsuarioServicio: RegistrarUsuarioService,  private http:HttpClient, private dataService: ApiServicio) { }
+  constructor(private registrarUsuarioServicio: RegistrarUsuarioService,  private http:HttpClient, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.listarPaises();
     this.listarPlanes();
-  }
+    this.usuario = new FormGroup({
+      email: new FormControl('',[Validators.email, Validators.required]),
+      password: new FormControl('',Validators.required),
+      nombreUser: new FormControl('',Validators.required),
+      nombre: new FormControl('',Validators.required),
+      apellido: new FormControl('',Validators.required),
+      edad: new FormControl('',[Validators.min(18), Validators.max(99), Validators.required]),
+      sexo: new FormControl('',[Validators.required, Validators.maxLength(1)]),
+      id_ciudad: new FormControl('', Validators.required)
+    });
+    this.tarjetaCredito = new FormGroup({
+      numero: new FormControl('', [Validators.required, Validators.min(1)]),
+      cvv: new FormControl('', [Validators.required, Validators.max(999), Validators.min(100)]),
+      fechaVencimiento: new FormControl('', Validators.required),
+    });
+    this.pais= new FormGroup({
+      idPais: new FormControl('',Validators.required)
+    });
 
+  }
+  get email() { return this.usuario.get('email'); }
+  get password() { return this.usuario.get('password'); }
+  get nombreUser() { return this.usuario.get('nombreUser'); }
+  get nombre() { return this.usuario.get('nombre'); }
+  get apellido() { return this.usuario.get('apellido'); }
+  get edad() { return this.usuario.get('edad'); }
+  get sexo() { return this.usuario.get('sexo'); }
+  get id_ciudad() { return this.usuario.get('id_ciudad'); }
+  get numero() { return this.tarjetaCredito.get('numero'); }
+  get cvv() { return this.tarjetaCredito.get('cvv'); }
+  get fechaVencimiento() { return this.tarjetaCredito.get('fechaVencimiento'); }
+  get idPais() { return this.pais.get('idPais'); }
   listarPaises() {
     this.registrarUsuarioServicio.listarPaises().subscribe(
       datos => this.listaPaises = datos
