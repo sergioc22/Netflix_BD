@@ -17,18 +17,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrarUsuarioService } from './registrar-usuario/registrar-usuario.service';
 import { LoginServicioService } from './login/login-servicio.service'; 
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CatalogoComponent } from './catalogo/catalogo.component';
+
 //import { Authguard } from './authguard.guard';
 
 const routes: Routes = [
   { path: 'Login', component: LoginComponent },
   { path: '', component: LoginComponent, pathMatch:'full'},
   { path: 'Registrar', component: RegistrarUsuarioComponent },
-  { path: 'RegistrarPerfil', component: RegistrarPerfilComponent },
+  { path: 'RegistrarPerfil/:email', component: RegistrarPerfilComponent },
   { path: 'Dashboard', component: DashboardComponent },
-  { path: 'ListaPerfiles', component: SeleccionarPerfilComponent },
+  { path: 'ListaPerfiles/:email', component: SeleccionarPerfilComponent },
   { path: 'Dispositivo', component: RegistrarDispositivoComponent },
   { path: 'Inicio', component: InicioComponent },
   { path: 'EditarUser', component: EditarUsuarioComponent },
+  { path: 'Catalogo', component: CatalogoComponent },
 ];
 
 @NgModule({
@@ -43,6 +46,7 @@ const routes: Routes = [
     InicioComponent,
     EditarUsuarioComponent,
     DashboardComponent,
+    CatalogoComponent,
     
   ],
   imports: [

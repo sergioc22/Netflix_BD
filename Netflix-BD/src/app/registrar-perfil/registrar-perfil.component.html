@@ -1,1 +1,21 @@
-<p>registrar-perfil works!</p>
+<div class="container">
+    <h2>Registrar Perfil</h2>
+    <form [formGroup]="perfil">
+        <div class="form-floating mb-3 col-6 form-group">
+            <input type="text" class="form-control" formControlName="nombrePerfil" placeholder="Nombre de Perfil" required>
+            <label for="floatingInput">Nombre de Perfil</label>
+            <div *ngIf="nombrePerfil.invalid && (nombrePerfil.dirty || nombrePerfil.touched)"
+            class="alert alert-danger">
+          <div *ngIf="nombrePerfil.errors?.required">
+            Escribir un nombre para el perfil.
+          </div>
+          </div> 
+          </div>
+    </form>
+    <div class="container display-flex">
+        <div class=" d-flex justify-content-center mt-5 mb-5">
+            <button  type="submit" class="btn btn-danger btn-lg " [disabled]="perfil.invalid ? true : false" (click)="InsercionPerfil()" routerLink="/ListaPerfiles/{{correo.value.email}}">Registrarse</button>
+        </div>    
+    </div>
+</div>
+

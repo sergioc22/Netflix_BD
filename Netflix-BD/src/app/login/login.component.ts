@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   iniciar_Sesion(usuario: any){
     this.dataService.userlogin(usuario.value.email, usuario.value.password).pipe(first()).subscribe(
       data => {
-        const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/ListaPerfiles';
+        const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/ListaPerfiles/'+this.usuario.value.email ;
         this.router.navigate([redirect]);
     }
 

@@ -1,4 +1,24 @@
 <div class="container">
     <h2>Seleccionar Perfil</h2>
-    <button type="button" class="btn btn-secondary" routerLink="/RegistrarPerfil">Registrar Perfil</button>
+    <div *ngIf="hayRegistros(); else no_perfiles_registradas">
+    <table class="table table-dark table-striped ">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let perfil of listaPerfiles, index as i" routerLink="/Catalogo">
+            <td >{{i+1}}</td>
+            <td >{{perfil.Nombre_Perfil}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <ng-template #no_perfiles_registradas>
+        <h5><p>No hay perfiles registrados</p></h5>
+      </ng-template>
+    <button type="button" class="btn btn-secondary"  routerLink="/RegistrarPerfil/{{correo.value.email}}">Registrar Perfil</button>
 </div>
