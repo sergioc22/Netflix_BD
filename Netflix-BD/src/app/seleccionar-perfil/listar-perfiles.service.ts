@@ -11,4 +11,7 @@ export class ListarPerfilesService {
   listarPerfiles(email: any) {
     return this.http.get(`${this.URL}listarPerfiles.php?email=${email}`);
   }
+  EliminarPerfil(idPerfil: number) {
+    return this.http.get(`${this.URL}EliminarPerfil.php?idPerfil=${idPerfil}`);
+  }
 }

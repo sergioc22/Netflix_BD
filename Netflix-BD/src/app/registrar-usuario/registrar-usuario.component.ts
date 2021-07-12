@@ -44,7 +44,7 @@ export class RegistrarUsuarioComponent implements OnInit {
       nombre: new FormControl('',Validators.required),
       apellido: new FormControl('',Validators.required),
       edad: new FormControl('',[Validators.min(18), Validators.max(99), Validators.required]),
-      sexo: new FormControl('',[Validators.required, Validators.maxLength(1)]),
+      sexo: new FormControl('',[Validators.required, Validators.maxLength(3)]),
       id_ciudad: new FormControl('', Validators.required)
     });
     this.tarjetaCredito = new FormGroup({

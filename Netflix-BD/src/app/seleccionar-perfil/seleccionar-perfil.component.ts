@@ -40,5 +40,17 @@ export class SeleccionarPerfilComponent implements OnInit {
       return true;
     }
   }
-
+  validarNumeroPerfiles(i: any){
+    if(i>5)
+      return false;
+      else  
+      return true;
+  }
+  EliminarPerfil(idPerfil: any) {
+    this.listarServicio.EliminarPerfil(idPerfil).subscribe(
+      datos => {
+          this.listarPerfiles();
+      }
+    );
+  }
 }

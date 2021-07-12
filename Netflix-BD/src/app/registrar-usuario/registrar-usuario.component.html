@@ -77,6 +77,7 @@
         <select class="form-select form-control" formControlName="sexo" aria-label="Default select example" required>
             <option value="M">M</option>
             <option value="F">F</option>
+            <option value="N">N/A</option>
         </select>
         <div *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)"
         class="alert alert-danger">

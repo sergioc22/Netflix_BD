@@ -339,13 +339,13 @@ CREATE TABLE `tipo_dispositivo` (
 
 CREATE TABLE `usuario` (
   `Id_Usuario` int(11) NOT NULL,
-  `Nombre_Usuario` varchar(20) DEFAULT NULL,
+  `Nombre_Usuario` varchar(20) UNIQUE DEFAULT NULL,
   `Email` varchar(30) NOT NULL,
   `Contraseña` varchar(15) NOT NULL,
   `Nombre` varchar(20) NOT NULL,
   `Apellido` varchar(20) NOT NULL,
   `Edad` int(11) NOT NULL,
-  `Sexo` char(1) NOT NULL,
+  `Sexo` varchar(5) NOT NULL,
   `id_Ciudad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -784,6 +784,32 @@ ALTER TABLE `visualiza`
   ADD CONSTRAINT `visualiza_ibfk_1` FOREIGN KEY (`Id_Perfil`) REFERENCES `perfil` (`Id_Perfil`),
   ADD CONSTRAINT `visualiza_ibfk_2` FOREIGN KEY (`Id_Contenido`) REFERENCES `contenido` (`id_Contenido`);
 COMMIT;
+
+ALTER TABLE `usuario`
+	ADD CONSTRAINT edad_mayor_zero CHECK (edad > 0),
+	ADD CONSTRAINT check_sexo CHECK (sexo = 'M' OR sexo='F' OR sexo='N/A');
+
+ALTER TABLE `visualiza` 
+	ADD CONSTRAINT calif_check CHECK (Calificacion > 0 AND Calificacion < 6 );
+
+ALTER TABLE `persona_contenido`
+	ADD CONSTRAINT check_sexo_act CHECK (Sexo_Trab = 'M' OR Sexo_Trab='F' OR Sexo_Trab ='N/A'),
+	ADD CONSTRAINT check_experiencia CHECK (Año_Experiencia > 0);
+
+ALTER TABLE `tarjeta_credito`
+	ADD CONSTRAINT check_numero CHECK (Id_Tarjeta > 0 AND Cvv > 0);
+ALTER TABLE `suscripcion`
+	ADD CONSTRAINT check_tarifa CHECK (Tarifa > 0);
+ALTER TABLE `contenido` 
+	ADD CONSTRAINT check_lanzamiento CHECK (Año_Lanzamiento > 1900);
+ALTER TABLE `episodio`
+	ADD CONSTRAINT check_episodio CHECK (Numero > 0);
+ALTER TABLE `pelicula`
+	ADD CONSTRAINT check_minutos CHECK (Mins_Duracion > 0);
+ALTER TABLE `premio`
+	ADD CONSTRAINT check_premio CHECK (Año_Fue_Ganadora > 1900);
+ALTER TABLE `temporada`
+	ADD CONSTRAINT check_temporada CHECK (Numero > 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

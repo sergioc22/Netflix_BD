@@ -8,7 +8,7 @@ INSERT INTO usuario (Nombre_Usuario, Email, Contraseña, Nombre, Apellido, Edad,
     	('Johnba', 'john.b@gmail.com', 'barrios.55', 'Luis', 'Castillo', 25, 'M', 5),
     	('Dani.11', 'dani-m@gmail.com', 'mora.dani', 'Daniela', 'Morales', 21, 'F', 1),
     	('Adrir16', 'adrih10@gmail.com', 'hernandez1', 'aDri', 'Hernandez', 36, 'F', 3),
-    	('GilberG', 'gguerra.1@gmail.com', 'guerra22', 'Gilberto', 'Guerra', 38, 'M', 1)
+    	('GilberG', 'gguerra.1@gmail.com', 'guerra22', 'Gilberto', 'Guerra', 38, 'M', 1);
 
 INSERT INTO perfil (Id_Usuario, Nombre_Perfil) VALUES
 	(2, 'andres'),
@@ -25,19 +25,19 @@ INSERT INTO perfil (Id_Usuario, Nombre_Perfil) VALUES
     (8, 'ana'),
     (9, 'daniela'),
     (10, 'andriana'),
-    (11, 'gilberto')
+    (11, 'gilberto');
 
 INSERT INTO tarjeta_credito (Id_Tarjeta, Cvv, Fecha_Vencimiento) VALUES 
-	(567328, 342, '12/10/2022'),
-    (89912121, 576, '17/5/2024'),
-    (9428232, 908, '23/11/2023'),
-    (0129031, 142, '5/9/2021'),
-    (65464312, 634, '6/1/2024'),
-    (431212, 560, '11/4/2022'),
-    (543231, 173, '13/6/2026'),
-    (983137, 642, '12/2/2025'),
-    (0137127, 971, '1/9/2023'),
-    (0497321, 765, '26/11/2025')
+	(567328, 342, '2022-10-12'),
+    (89912121, 576, '2024-05-17'),
+    (9428232, 908, '2023-11-23'),
+    (0129031, 142, '2021-09-05'),
+    (65464312, 634, '2024-01-06'),
+    (431212, 560, '2022-04-11'),
+    (543231, 173, '2026-06-13'),
+    (983137, 642, '2025-02-12'),
+    (0137127, 971, '2023-09-01'),
+    (0497321, 765, '2025-11-26');
 
 
 INSERT INTO contrata (Id_Usuario, Id_Suscripcion, Id_Tarjeta, Fecha_Inicio, Fecha_Fin) VALUES 
@@ -48,4 +48,4 @@ INSERT INTO contrata (Id_Usuario, Id_Suscripcion, Id_Tarjeta, Fecha_Inicio, Fech
     (6, 3, 65464312, '2021-07-06', '2021-08-06'),
     (7, 6, 431212, '2021-07-10', '2021-08-10'),
     (8, 6, 543231, '2021-07-11', '2021-08-11'),
-	(10, 9, 0497321, '2021-07-02', '2021-08-02')
+	(10, 9, 0497321, '2021-07-02', '2021-08-02');

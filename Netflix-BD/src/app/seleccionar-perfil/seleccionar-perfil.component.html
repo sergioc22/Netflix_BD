@@ -9,11 +9,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let perfil of listaPerfiles, index as i" routerLink="/Catalogo">
+          <tr *ngFor="let perfil of listaPerfiles, index as i" >
             <td >{{i+1}}</td>
-            <td >{{perfil.Nombre_Perfil}}</td>
+            <td routerLink="/Catalogo">{{perfil.Nombre_Perfil}}</td>
+            <td> <button class="btn btn-danger" (click)="EliminarPerfil(perfil.Id_Perfil)"> Borrar </button> </td> 
           </tr>
-
         </tbody>
       </table>
     </div>

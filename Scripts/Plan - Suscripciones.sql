@@ -1,7 +1,7 @@
 INSERT INTO plan (Nombre_Plan) VALUES 
 	('Plan Basico'), 
 	('Plan Estandar'), 
-	('Plan Premium')
+	('Plan Premium');
 INSERT INTO suscripcion (Nombre, Tipo, Descripcion, Tarifa, Id_Plan) VALUES
 	('Gold', 'Para un dispositivo', 'Te da acceso una pequeña parte de nuestro catalago', 8, 1),
     ('Premium', 'Para dos dispositivo', 'Te da acceso a la mayor parte de nuestro catalogo', 12, 1),
