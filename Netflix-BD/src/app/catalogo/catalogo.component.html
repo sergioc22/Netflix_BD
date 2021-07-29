@@ -1,1 +1,43 @@
-<p>catalogo works!</p>
+
+<div *ngFor="let user of usuario" class="d-flex justify-content-end mt-2 mb-2">
+<button type="button" class="btn btn-link text-danger "  routerLink="/ListaPerfiles/{{user.Email}}">Regresar a Seleccionar Usuario</button>
+</div>
+
+<div class="container">
+    <h2 class="text-danger">Películas</h2>
+    <div *ngIf="hayPeliculas(); else no_peliculas_registradas">
+        <div  class="row row-cols-1 row-cols-md-3 g-4">
+            <div *ngFor="let pelicula of listaPeliculas" class="col">
+                <div  class="card text-white bg-dark bg-gradient" >
+                    <div class="card-body" >
+                    <a routerLink="/Pelicula/{{idPerfil.value.idperfil}}/{{pelicula.id_Contenido}}"   class="card-title text-danger"><h5>{{pelicula.Nombre}}</h5></a>
+                    <p class="card-text">Año {{pelicula.Lanzamiento}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #no_peliculas_registradas>
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </ng-template>
+    <h2 class="text-danger mt-5">Series</h2>
+    <div *ngIf="haySeries(); else no_serie_registradas">
+        <div  class="row row-cols-1 row-cols-md-3 g-4">
+            <div *ngFor="let serie of listaSeries" class="col">
+                <div  class="card text-white bg-dark bg-gradient">
+                    <div class="card-body">
+                    <a  routerLink="/Serie/{{idPerfil.value.idperfil}}/{{serie.id_Contenido}}" class="card-title text-danger"><h5>{{serie.Nombre}}</h5></a>
+                    <p class="card-text">Año {{serie.Lanzamiento}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #no_serie_registradas>
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </ng-template>
+</div>

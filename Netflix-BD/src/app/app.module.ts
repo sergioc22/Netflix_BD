@@ -18,6 +18,8 @@ import { RegistrarUsuarioService } from './registrar-usuario/registrar-usuario.s
 import { LoginServicioService } from './login/login-servicio.service'; 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
+import { PeliculaComponent } from './pelicula/pelicula.component';
+import { SerieComponent } from './serie/serie.component';
 
 //import { Authguard } from './authguard.guard';
 
@@ -31,7 +33,9 @@ const routes: Routes = [
   { path: 'Dispositivo', component: RegistrarDispositivoComponent },
   { path: 'Inicio', component: InicioComponent },
   { path: 'EditarUser', component: EditarUsuarioComponent },
-  { path: 'Catalogo', component: CatalogoComponent },
+  { path: 'Catalogo/:idperfil', component: CatalogoComponent },
+  { path: 'Pelicula/:idperfil/:idpelicula', component: PeliculaComponent},
+  { path: 'Serie/:idperfil/:idserie', component: SerieComponent}
 ];
 
 @NgModule({
@@ -47,6 +51,8 @@ const routes: Routes = [
     EditarUsuarioComponent,
     DashboardComponent,
     CatalogoComponent,
+    PeliculaComponent,
+    SerieComponent,
     
   ],
   imports: [

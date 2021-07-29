@@ -1,0 +1,128 @@
+<div class="container">
+    <div *ngIf="existe(); else no_existe">
+        <div *ngFor="let mostrar of serie">
+            <h1 class="display-1">{{mostrar.Nombre}}</h1>
+            <dl class="row">
+                <dt class="col-sm-3">Año de Lanzamiento</dt>
+                <dd class="col-sm-9">{{mostrar.Lanzamiento}}</dd>
+                <dt class="col-sm-3">Sinópsis</dt>
+                <dd class="col-sm-9">{{mostrar.Descripcion}}</dd>
+            </dl>
+            <div *ngIf= "esContenidoOriginal(mostrar.Es_Contenido_Original); no_es">
+                <p><strong> Contenido Exclusivo de Netflix </strong></p>
+            </div>
+            <ng-template #no_es>
+                <p></p>
+            </ng-template>
+        </div>
+        <div *ngIf="existeIdioma(); else no_idioma">
+            <div *ngFor="let lenguaje of idioma">
+                <dl class="row">
+                    <dt class ="col-sm-3">Idioma:</dt>
+                    <dd class ="col-sm-9">{{lenguaje.NombIdioma}}</dd>
+                </dl>
+            </div>
+        </div>
+        <ng-template #no_idioma>
+            <div class="spinner-border text-danger" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+        </ng-template>
+        <div *ngIf="existeEdad(); else no_edad">
+            <div *ngFor="let edad of clasificacion">
+                <dl class="row">
+                    <dt class ="col-sm-3">Clasificación de Edad:</dt>
+                    <dd class ="col-sm-9">{{edad.Descripcion}}</dd>
+                </dl>
+            </div>
+        </div>
+        <ng-template #no_edad>
+            <div class="spinner-border text-danger" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+        </ng-template>
+        <div *ngIf="existeActor(); else no_actor">
+            <dl class="row">
+                <dt class ="col-sm-3">Protagonizada por:</dt>
+                <dd class ="col-sm-9" ><p *ngFor="let actua of actor">{{actua.NombTrab}} {{actua.ApellidoTrab}}</p></dd>
+            </dl>
+    </div>
+    <ng-template #no_actor>
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </ng-template>
+    <h3>Temporadas</h3>
+    <div class="mb-3 col-6 form-group" *ngIf="existeTemporada(); else no_temporadas"  >
+      <form [formGroup]="temporada">
+        <div class="mb-3 col-6" >
+            <select  class="form-select form-control" formControlName="id_temporada" aria-label="Default select example"  (change)="ObtenerEpisodio()">
+                <option  *ngFor="let temp of temporadas" value="{{temp.Id_Temporada}}" >{{temp.Numero}} {{temp.Descripcion}} </option>
+              </select> 
+        </div>
+        </form>
+    </div>
+    <ng-template #no_temporadas>
+    </ng-template>
+        <h3 class="mb-3">Episodios</h3>
+        <div *ngIf="existeEpisodios(); else no_episodios">
+            <ol class="list-group list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let episodio of episodios">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">{{episodio.Numero}}. {{episodio.Nombre}}</div>
+                    {{episodio.Descripcion}}
+                  </div>
+                </li>
+              </ol>
+        </div>
+        <ng-template #no_episodios>
+        </ng-template>
+        <div *ngIf="existeSuscripcion(); else no_sus">
+            <div *ngFor="let suscribe of suscripcion">
+                <dl class="row">
+                    <dt class ="col-sm-3">Este contenido requiere de una suscripción {{suscribe.Nombre}}</dt>
+                </dl>
+            </div>
+        </div>
+        <ng-template #no_sus>
+        </ng-template>
+        <div *ngIf="existeCalificacion(); else calificar">
+            <div *ngFor="let calificado of calificacion">
+                <dl class="row">
+                    <dt class ="col-sm-3">Puntuacion dada: </dt>
+                    <dd class="col-sm-9">{{calificado.Calificacion}}</dd>
+                </dl>
+            </div>
+            <div class=" d-flex  mt-5 mb-5">
+                <button  type="submit" class="btn btn-danger btn-lg " (click)="cambiarPuntuacion() "  >Cambiar</button>
+            </div> 
+        </div>
+        <ng-template #calificar>
+            <h5 class="mb-3">Califica esta Serie:</h5>
+            <div class="container">
+                <form [formGroup]="califica">
+                <div class="mb-3 col-2 form-group" >
+                    <select  class="form-select form-control" formControlName="puntuacion" aria-label="Default select example" >
+                        <option  value="1" >1 </option>
+                        <option  value="2" >2 </option>
+                        <option  value="3" >3 </option>
+                        <option  value="4" >4 </option>
+                        <option  value="5" >5 </option>
+                      </select> 
+                </div>
+            </form>
+                <div class="container display-flex">
+                    <div class=" d-flex mt-5 mb-5">
+                        <button  type="submit" class="btn btn-danger btn-lg " (click)="registrarPuntuacion() "  >Calificar</button>
+                    </div>    
+                </div>
+            </div>
+        </ng-template>
+        
+    </div>
+    <ng-template #no_existe>
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </ng-template>
+</div>

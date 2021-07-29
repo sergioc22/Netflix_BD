@@ -12,7 +12,7 @@
   $conexion = conexion(); // CREA LA CONEXION
 
   // REALIZA LA QUERY A LA DB
-  $registros = mysqli_query($conexion, "SELECT Id_Usuario FROM usuario WHERE Email = '$_GET[email]'");
+  $registros = mysqli_query($conexion, "SELECT * FROM visualiza WHERE Id_Contenido = $_GET[idcontenido] AND Id_Perfil = $_GET[idperfil]");
   
   // RECORRE EL RESULTADO Y LO GUARDA EN UN ARRAY
   while ($resultado = mysqli_fetch_array($registros))  

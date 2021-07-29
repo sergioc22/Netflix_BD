@@ -1,11 +1,11 @@
 <!--<app-header></app-header>-->
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark bg-gradient">
     <div class="container-fluid">
       <a class="navbar-brand text-danger" *ngIf="loginbtn" routerLink="" routerLinkActive="active"><h1>NETFLIX</h1></a>
-      <a class="navbar-brand text-danger" *ngIf="logoutbtn" ><h1>NETFLIX</h1></a>
+      <a class="navbar-brand text-danger text-gradient" *ngIf="logoutbtn" ><h1>NETFLIX</h1></a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" *ngIf="logoutbtn" aria-current="page" (click)="logout()" >Salir</a>
+        <li class="nav-item  ">
+          <a class="nav-link " *ngIf="logoutbtn" aria-current="page" (click)="logout()" >Salir</a>
         </li>
     </ul> 
     </div>
