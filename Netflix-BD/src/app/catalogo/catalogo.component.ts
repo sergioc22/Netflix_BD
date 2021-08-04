@@ -12,6 +12,7 @@ export class CatalogoComponent implements OnInit {
   listaPeliculas: any;
   listaSeries: any;
   usuario: any;
+  listaRecomendaciones:any;
   constructor( private route: ActivatedRoute, private catalogoServicio: CatalogoService) { 
     this.idPerfil = this.route.params;
   }
@@ -19,7 +20,8 @@ export class CatalogoComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerUsuario();
     this.listarPeliculas();
-    this.listarSerie()
+    this.listarSerie();
+    this.listarRecomendaciones();
   }
   
   obtenerUsuario (){
@@ -38,6 +40,12 @@ export class CatalogoComponent implements OnInit {
     );
   }
 
+  listarRecomendaciones(){
+    this.catalogoServicio.listarRecomendaciones(this.idPerfil.value.idperfil).subscribe(
+      datos => this.listaRecomendaciones = datos
+    );
+  }
+
   hayPeliculas() {
     if(this.listaPeliculas == null) {
       return false;
@@ -47,6 +55,13 @@ export class CatalogoComponent implements OnInit {
   }
   haySeries() {
     if(this.listaSeries == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  hayRecomendaciones() {
+    if(this.listaRecomendaciones == null) {
       return false;
     } else {
       return true;

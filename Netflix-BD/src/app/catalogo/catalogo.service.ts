@@ -18,4 +18,7 @@ export class CatalogoService {
     return this.http.get(`${this.URL}obtenerSeries.php`);
   }
   
+  listarRecomendaciones(idperfil: any){
+    return this.http.get(`${this.URL}listarRecomendaciones.php?idperfil=${idperfil}`);
+  }
 }

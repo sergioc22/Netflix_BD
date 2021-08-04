@@ -40,4 +40,27 @@
           <span class="visually-hidden">Loading...</span>
         </div>
     </ng-template>
+
+    <h2 class="text-danger mt-5">Te Recomendamos</h2>
+    <div *ngIf="hayRecomendaciones(); else no_recomendaciones">
+        <div  class="row row-cols-1 row-cols-md-3 g-4">
+            <div *ngFor="let recomienda of listaRecomendaciones" class="col">
+                <div  class="card text-white bg-dark bg-gradient">
+                    <div class="card-body">
+                    <a  routerLink="/Pelicula/{{idPerfil.value.idperfil}}/{{recomienda.id_Contenido}}" class="card-title text-danger"><h5>{{recomienda.Nombre}}</h5></a>
+                    <p class="card-text">Año {{recomienda.Lanzamiento}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #no_recomendaciones>
+        
+    </ng-template>
 </div>
+<footer class="footer bg-dark mt-5 py-3 shadow-lg ">
+    <div class="container text-white ">
+        <h2 class= "text-danger text-gradient align-center">N</h2>
+        <p class=" text-center">Disfruta de la película <strong> Inglourious Basterds </strong> con tu suscripción <a Class="text-warning">VIP</a> </p>
+    </div>
+</footer>

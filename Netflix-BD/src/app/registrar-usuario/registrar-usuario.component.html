@@ -9,10 +9,10 @@
         <div *ngIf="email.invalid && (email.dirty || email.touched)"
         class="alert alert-danger">
       <div *ngIf="email.errors?.required">
-        Escribir un correo valido.
+        Escribir un correo válido.
       </div>
       <div *ngIf="email.errors?.email">
-        Escribir un correo valido.
+        Escribir un correo válido.
       </div>
       </div>
       </div>
@@ -62,13 +62,13 @@
         <div *ngIf="edad.invalid && (edad.dirty || edad.touched)"
         class="alert alert-danger">
       <div *ngIf="edad.errors?.required">
-        Escribir una Edad valida.
+        Escribir una Edad válida.
       </div>
       <div *ngIf="edad.errors?.min">
-        Escribir una Edad valida.
+        Escribir una Edad válida.
       </div>
       <div *ngIf="edad.errors?.max">
-        Escribir una Edad valida.
+        Escribir una Edad válida.
       </div>
       </div> 
       </div>
@@ -82,14 +82,14 @@
         <div *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)"
         class="alert alert-danger">
       <div *ngIf="sexo.errors?.required">
-        Escoger una opcion.
+        Escoger una opción.
       </div>
       </div>       
     </div>
 <!--UBICACION DEL USUARIO-->
 <div class="container">
     <h3>Ubicación</h3>
-    <label for="exampleFormControlInput1" class="form-label">Pais:</label>
+    <label for="exampleFormControlInput1" class="form-label">País:</label>
     <div class="mb-3 col-6 form-group" *ngIf="hayRegistros(); else no_paises_registradas"  >
       <form [formGroup]="pais">
         <div class="mb-3 col-6" >
@@ -98,7 +98,7 @@
                 <div *ngIf="idPais.invalid && (idPais.dirty || idPais.touched)"
                 class="alert alert-danger">
               <div *ngIf="idPais.errors?.required">
-                Escoger una opcion.
+                Escoger una opción.
               </div>
               </div> 
               </select> 
@@ -117,12 +117,12 @@
           <div *ngIf="id_ciudad.invalid && (id_ciudad.dirty || id_ciudad.touched)"
         class="alert alert-danger">
       <div *ngIf="id_ciudad.errors?.required">
-        Escoger una opcion.
+        Escoger una opción.
       </div>
       </div> 
         </div>
           <ng-template #no_ciudades_registradas>
-            <h5><p>Escoger Pais</p></h5>
+            <h5><p>Escoger País</p></h5>
           </ng-template>
         </div> 
 </div>
@@ -168,13 +168,13 @@
     <h2 class="mt-5">Datos de Tarjeta de crédito</h2>
     <div class="form-floating mb-3 col-6">
         <input type="number" class="form-control" formControlName="numero" placeholder="Numero de Tarjeta" >
-        <label for="floatingInput">Numero de Tarjeta</label>
+        <label for="floatingInput">Número de Tarjeta</label>
         <div *ngIf="numero.invalid && (numero.dirty || numero.touched)"
         class="alert alert-danger">
       <div *ngIf="numero.errors?.required">
-        Escribir un numero de tarjeta validad.
+        Escribir un número de tarjeta válido.
       </div>
-      <div *ngIf="numero.errors?.min">Escribir un numero de tarjeta validad.</div>
+      <div *ngIf="numero.errors?.min">Escribir un número de tarjeta válido.</div>
       
     </div>
       </div>
@@ -184,10 +184,10 @@
         <div *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)"
         class="alert alert-danger">
       <div *ngIf="cvv.errors?.required">
-        Escribir una cvv validad.
+        Escribir un cvv válido.
       </div>
-      <div *ngIf="cvv.errors?.min">Escribir una cvv validad.</div>
-      <div *ngIf="cvv.errors?.max">Escribir una cvv validad.</div>
+      <div *ngIf="cvv.errors?.min">Escribir una cvv válido.</div>
+      <div *ngIf="cvv.errors?.max">Escribir una cvv válido.</div>
     </div>
       </div>
       <div class="form-floating mb-3 col-6">
@@ -201,6 +201,23 @@
       </div> 
       </div>
     </form>
+</div>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        ¿Posees una tarjeta de regalo?
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <div class="form-floating mb-3 col-6">
+          <input type="text" class="form-control" placeholder="Tarjeta de Regalo" required>
+          <label for="floatingInput">Escribe tu código aquí</label> 
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <form [formGroup]="contrata">
 <div *ngIf="hayUser();">

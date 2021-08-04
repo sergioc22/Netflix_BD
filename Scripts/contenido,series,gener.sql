@@ -118,3 +118,22 @@ INSERT INTO Tiene (id_contenido, id_genero) VALUES
 (6,2),
 (8,7),
 (11,6),
+
+INSERT INTO Tipo_dispositivo (nombre, descripcion)VALUES
+('smartphone',''),
+('pc',''),
+('consola',''),
+('smarttv','');
+
+INSERT INTO dispositivo(Nombre_Dispositivo, id_tipo)VALUES
+('iphonex_112',1),
+('samsunggalaxyA21_455',1),
+('ps4_1122',3),
+('pc02',2),
+('sonybravia_101',4);
+
+INSERT INTO Conecta (id_perfil, id_dispositivo)VALUES
+(4,5),
+(4,4),
+(9,1),
+(2,3);
